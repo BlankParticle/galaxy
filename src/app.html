@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/img/logo.svg" sizes="any" type="image/svg+xml" />
+    <link rel="icon" href="%sveltekit.assets%/img/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="%sveltekit.assets%/img/apple-touch-icon-180x180.png" />
+    <link rel="manifest" href="%sveltekit.assets%/manifest.json" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script nonce="%sveltekit.nonce%" data-dark-mode-script>
+      ((e) => {
+        document.documentElement.classList.toggle("dark", e);
+        document.documentElement.style.colorScheme = e ? "dark" : "light";
+      })(
+        "theme" in localStorage
+          ? localStorage.getItem("theme") === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches,
+      );
+      document.querySelector("[data-dark-mode-script]").remove();
+    </script>
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover" data-theme="wintry">
+    <div class="contents">%sveltekit.body%</div>
+  </body>
+</html>
