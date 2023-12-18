@@ -1,6 +1,7 @@
 <script lang="ts">
+  import Blog from "@components/Blog.svelte";
   import multiType from "@lib/actions/multiType";
-  import animateCanvas from "@lib/canvas";
+  import animateCanvas from "@lib/actions/canvas";
   import { motionReduced } from "@lib/utils/windowQuery.svelte";
   // These are the most popular greetings in the world
   // Sorry if I missed yours
@@ -24,7 +25,7 @@
 </svg>
 
 <div class="flex justify-center bg-surface-200 dark:bg-surface-900">
-  <div class="flex h-[70vh] w-full max-w-screen-lg flex-col p-3 md:p-0">
+  <div class="flex w-full max-w-screen-lg flex-col p-3 md:p-0">
     <div class="gradient-text flex flex-col from-primary-500 to-tertiary-500 py-2 text-left font-semibold">
       <span class="h2" use:multiType={{ alternateTexts: alternateHellos, disable: motionReduced.matches }}>Hello!</span>
       <span class="h1">It's Rahul Mishra</span>
@@ -61,7 +62,7 @@
         href="/mail"
         class="social-link-button from-email-400 to-email-300 dark:from-email-500 dark:to-email-400"
         target="_blank"
-        title="Email Me"
+        title="Email me"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path
@@ -100,7 +101,7 @@
         href="/dc"
         class="social-link-button from-discord-400 to-discord-300 dark:from-discord-500 dark:to-discord-400"
         target="_blank"
-        title="Message Me on Discord"
+        title="Message me on Discord"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path
@@ -109,6 +110,9 @@
         </svg>
         <span class="hidden md:flex">Discord</span>
       </a>
+    </div>
+    <div class="my-16">
+      <Blog />
     </div>
   </div>
 </div>

@@ -2,16 +2,16 @@ import type { RequestHandler } from "./$types";
 import { error, redirect } from "@sveltejs/kit";
 
 const redirectMap: Record<string, string> = {
-  "(gh|github)(.+)?": "https://github.com/Blankparticle$2",
-  "(myanimelist|mal)": "https://myanimelist.net/profile/Blankparticle",
-  "(twitter|x)": "https://twitter.com/blankparticle",
-  "(e|g)?mail": "mailto:hello@blankparticle.in",
-  "(discord|dc)": "https://discord.com/users/1096392763144159252",
-  blog: "https://blog.blankparticle.in",
-  linkedin: "https://www.linkedin.com/in/blankparticle",
-  spotify: "https://open.spotify.com/user/31krf3flzpa44udfgkc5a5xrqn7y",
-  hashnode: "https://hashnode.com/@BlankParticle",
-  devto: "https://dev.to/blankparticle",
+  "(gh|github)(.+)?$": "https://github.com/Blankparticle$2",
+  "(myanimelist|mal)$": "https://myanimelist.net/profile/Blankparticle",
+  "(twitter|x)$": "https://twitter.com/blankparticle",
+  "(e|g)?mail$": "mailto:hello@blankparticle.in",
+  "(discord|dc)$": "https://discord.com/users/1096392763144159252",
+  "(blog)$": "https://blog.blankparticle.in",
+  "(linkedin)$": "https://www.linkedin.com/in/blankparticle",
+  "(spotify)$": "https://open.spotify.com/user/31krf3flzpa44udfgkc5a5xrqn7y",
+  "(hashnode)$": "https://hashnode.com/@BlankParticle",
+  "(devto)$": "https://dev.to/blankparticle",
 };
 
 export const GET = (({ params: { rewrites } }) => {
