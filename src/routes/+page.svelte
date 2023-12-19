@@ -6,6 +6,7 @@
   // These are the most popular greetings in the world
   // Sorry if I missed yours
   const alternateHellos = ["Namaste", "Konnichiwa", "Hola", "Bonjour"].map((text) => text + "!");
+  const { data } = $props();
 </script>
 
 <canvas
@@ -112,7 +113,18 @@
       </a>
     </div>
     <div class="my-16">
-      <Blog />
+      {#if data.error}
+        <div
+          class="flex w-fit flex-col rounded border border-error-400 p-4 font-semibold dark:border-error-500 dark:text-surface-100"
+        >
+          <span>There was an Error while fetching the blog posts</span>
+          <span class="dark:text-surface-400">
+            {data.error}
+          </span>
+        </div>
+      {:else}
+        <Blog blogs={data.blogData || []} />
+      {/if}
     </div>
   </div>
 </div>
