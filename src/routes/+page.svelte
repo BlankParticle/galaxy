@@ -11,14 +11,14 @@
 
 <canvas
   use:animateCanvas
-  class="absolute top-0 z-[-1] h-44 w-full opacity-0 transition-opacity duration-0 ease-in-out dark:opacity-100 dark:duration-1000 md:h-72"
+  class="absolute top-0 z-[-1] h-44 w-full opacity-0 transition-opacity duration-0 ease-in-out md:h-72 dark:opacity-100 dark:duration-1000"
   style:opacity="0"
 />
 <svg
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 1440 320"
   preserveAspectRatio="none"
-  class="h-28 fill-surface-200 dark:fill-surface-900 md:h-40"
+  class="h-28 fill-surface-200 md:h-40 dark:fill-surface-900"
 >
   <path
     d="M0,128L40,160C80,192,160,256,240,256C320,256,400,192,480,186.7C560,181,640,235,720,240C800,245,880,203,960,202.7C1040,203,1120,245,1200,234.7C1280,224,1360,160,1400,128L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
@@ -112,7 +112,7 @@
         <span class="hidden md:flex">Discord</span>
       </a>
     </div>
-    <div class="my-16">
+    <div class="mt-16">
       {#if data.error}
         <div
           class="flex w-fit flex-col rounded border border-error-400 p-4 font-semibold dark:border-error-500 dark:text-surface-100"
@@ -130,6 +130,6 @@
 </div>
 
 <svelte:head>
-  <title>Home | Galaxy | BlankParticle</title>
+  <title>Home | Galaxy | 🎄 BlankParticle</title>
   <meta name="description" content="Galaxy, The Glorified Personal Website of Rahul Mishra aka BlankParticle" />
 </svelte:head>
