@@ -6,11 +6,9 @@
 </script>
 
 <div class="flex flex-col">
-  <div class="my-4 px-2 md:my-10 md:px-0">
+  <div class="my-4 px-2 md:my-10">
     <Navbar />
   </div>
   <slot />
-  <div class="px-2 md:px-0">
-    <Footer commitSha={data.commitSha} />
-  </div>
+  <Footer commitSha={data.commitSha} />
 </div>

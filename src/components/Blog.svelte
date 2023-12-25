@@ -1,18 +1,20 @@
 <script lang="ts">
-  import type { LatestBlogsType } from "@lib/schemas/api.blogs";
-  const { blogs } = $props<{ blogs: LatestBlogsType }>();
+  import type { LatestBlogs } from "@lib/schemas/api.blogs";
+  const { blogs } = $props<{ blogs: LatestBlogs }>();
 </script>
 
-<div class="gradient-text h3 mb-1 from-tertiary-400 to-tertiary-500 font-bold">My Latest Blog Posts</div>
+<div class="gradient-text h3 mb-1 from-tertiary-400 to-tertiary-500 font-bold">
+  My Latest Blog Posts
+</div>
 {#each blogs as blog}
   <div class="mb-6 flex w-fit flex-col px-1">
     <span class="mt-1 min-w-[75%] font-bold md:min-w-[50ch]">{blog.title}</span>
     <span class="mt-1 min-w-[60%] font-semibold leading-none md:min-w-[20ch] dark:text-surface-600">
-      Published on {blog.published_on}
+      Published on {blog.publishedOn}
     </span>
     <div class="mt-1 flex min-w-[60%] gap-4 font-semibold md:min-w-[30ch]">
       <a
-        href={blog.hashnode_link}
+        href={blog.hashnodeLink}
         target="_blank"
         class="animated-underline flex items-center gap-1 text-tertiary-700 dark:text-tertiary-400"
       >
@@ -25,7 +27,7 @@
         </svg>
       </a>
       <a
-        href={blog.devto_link}
+        href={blog.devToLink}
         target="_blank"
         class="animated-underline flex items-center gap-1 text-tertiary-700 dark:text-tertiary-400"
       >

@@ -73,7 +73,8 @@
   );
 
   const changeThemeMode = (forceTo?: string) => {
-    const mode = forceTo || (document.documentElement.classList.contains("dark") ? "light" : "dark");
+    const mode =
+      forceTo || (document.documentElement.classList.contains("dark") ? "light" : "dark");
     !forceTo && playOnce(`/media/switch-${mode === "dark" ? "off" : "on"}.mp3`);
     isDarkMode = mode === "dark";
     document.documentElement.classList.toggle("dark", mode === "dark");

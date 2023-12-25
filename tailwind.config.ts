@@ -1,7 +1,7 @@
+import { skeleton } from "@skeletonlabs/tw-plugin";
+import { fuchsia, indigo, purple, sky } from "tailwindcss/colors";
 import { fontFamily } from "tailwindcss/defaultTheme";
 import type { Config } from "tailwindcss/types/config";
-import { skeleton } from "@skeletonlabs/tw-plugin";
-import { purple, fuchsia, sky, indigo } from "tailwindcss/colors";
 
 const pickSocialColors = (colors: Record<string, string>) => {
   return {

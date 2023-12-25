@@ -20,16 +20,18 @@ class Canvas {
       this.resize(entry.contentRect.width, entry.contentRect.height);
     }).observe(canvas);
 
-    window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", ({ matches }) => {
-      if (matches) {
-        this.motionReduced = true;
-        this.pause();
-        this.clear();
-      } else {
-        this.motionReduced = false;
-        this.play();
-      }
-    });
+    window
+      .matchMedia("(prefers-reduced-motion: reduce)")
+      .addEventListener("change", ({ matches }) => {
+        if (matches) {
+          this.motionReduced = true;
+          this.pause();
+          this.clear();
+        } else {
+          this.motionReduced = false;
+          this.play();
+        }
+      });
 
     const offscreenCanvas = canvas.transferControlToOffscreen();
     this.worker.postMessage({ type: "init", canvas: offscreenCanvas }, [offscreenCanvas]);

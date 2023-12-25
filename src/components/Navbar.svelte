@@ -6,7 +6,9 @@
   let swinging = $state(false);
 
   const swing = async () => {
-    const chars = Array.from(document.querySelector("[data-swing]")?.children || []) as HTMLElement[];
+    const chars = Array.from(
+      document.querySelector("[data-swing]")?.children || [],
+    ) as HTMLElement[];
     if (swinging || motionReduced.matches) {
       return chars.forEach((char) => char.classList.remove("hidden"));
     }
@@ -38,7 +40,7 @@
 </script>
 
 <nav
-  class="bg-surface-100/15 dark:bg-surface-800/15 border-surface-400-500-token mx-auto flex h-16 w-full max-w-screen-lg items-center border px-4 shadow-lg backdrop-blur-sm rounded-token"
+  class="border-surface-400-500-token mx-auto flex h-16 w-full max-w-screen-lg items-center border bg-surface-100/15 px-4 shadow-lg backdrop-blur-sm rounded-token dark:bg-surface-800/15"
 >
   <a
     class="no-tap-highlight anchor flex h-fit items-center text-xl font-bold no-underline"

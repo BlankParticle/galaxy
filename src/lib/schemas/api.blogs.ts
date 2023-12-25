@@ -1,16 +1,16 @@
-import { type Output, array, object, string, transform } from "valibot";
 import { format } from "date-fns";
+import { array, object, string, transform, type Output } from "valibot";
 
-const latestBlogsSchema = array(
+const latestBlogs = array(
   transform(
     object({ title: string(), published_at: string(), url: string(), canonical_url: string() }),
-    ({ canonical_url, url, published_at, ...rest }) => ({
-      devto_link: url,
-      hashnode_link: canonical_url,
-      published_on: format(new Date(published_at), "do MMM yyyy"),
-      ...rest,
+    ({ title, canonical_url, url, published_at }) => ({
+      title,
+      devToLink: url,
+      hashnodeLink: canonical_url,
+      publishedOn: format(new Date(published_at), "do MMM yyyy"),
     }),
   ),
 );
-export default latestBlogsSchema;
-export type LatestBlogsType = Output<typeof latestBlogsSchema>;
+export default latestBlogs;
+export type LatestBlogs = Output<typeof latestBlogs>;

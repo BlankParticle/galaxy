@@ -3,6 +3,7 @@
   import multiType from "@lib/actions/multiType";
   import animateCanvas from "@lib/actions/canvas";
   import { motionReduced } from "@lib/utils/windowQuery.svelte";
+  import Spotify from "@components/Spotify.svelte";
   // These are the most popular greetings in the world
   // Sorry if I missed yours
   const alternateHellos = ["Namaste", "Konnichiwa", "Hola", "Bonjour"].map((text) => text + "!");
@@ -26,9 +27,15 @@
 </svg>
 
 <div class="flex justify-center bg-surface-200 dark:bg-surface-900">
-  <div class="flex w-full max-w-screen-lg flex-col p-3 md:p-0">
-    <div class="gradient-text flex flex-col from-primary-500 to-tertiary-500 py-2 text-left font-semibold">
-      <span class="h2" use:multiType={{ alternateTexts: alternateHellos, disable: motionReduced.matches }}>Hello!</span>
+  <div class="flex w-full max-w-screen-lg flex-col p-3">
+    <div
+      class="gradient-text flex flex-col from-primary-500 to-tertiary-500 py-2 text-left font-semibold"
+    >
+      <span
+        class="h2"
+        use:multiType={{ alternateTexts: alternateHellos, disable: motionReduced.matches }}
+        >Hello!</span
+      >
       <span class="h1">It's Rahul Mishra</span>
       <span class="h3 mt-4 origin-left rotate-1 font-normal text-surface-600">
         {new Date().getFullYear() - 2005}yo
@@ -126,10 +133,16 @@
         <Blog blogs={data.blogData || []} />
       {/if}
     </div>
+    <div class="mx-auto my-8 w-full">
+      <Spotify />
+    </div>
   </div>
 </div>
 
 <svelte:head>
   <title>Home | Galaxy | 🎄 BlankParticle</title>
-  <meta name="description" content="Galaxy, The Glorified Personal Website of Rahul Mishra aka BlankParticle" />
+  <meta
+    name="description"
+    content="Galaxy, The Glorified Personal Website of Rahul Mishra aka BlankParticle"
+  />
 </svelte:head>
