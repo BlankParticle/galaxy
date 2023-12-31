@@ -2,7 +2,6 @@
   import "../app.tw.css";
   import Navbar from "@components/Navbar.svelte";
   import Footer from "@components/Footer.svelte";
-  const { data } = $props();
 </script>
 
 <div class="flex flex-col">
@@ -10,5 +9,5 @@
     <Navbar />
   </div>
   <slot />
-  <Footer commitSha={data.commitSha} />
+  <Footer />
 </div>

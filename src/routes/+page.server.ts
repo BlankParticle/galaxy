@@ -4,7 +4,7 @@ import type { Config } from "@sveltejs/adapter-vercel";
 import { safeParse } from "valibot";
 import type { PageServerLoad } from "./$types";
 
-export const load = (async () => {
+export const load = (async ({ fetch }) => {
   const response = await fetch("https://dev.to/api/articles/me/published?per_page=3", {
     headers: {
       "api-key": DEV_TO_API_TOKEN,

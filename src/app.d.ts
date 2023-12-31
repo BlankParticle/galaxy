@@ -4,7 +4,9 @@ declare global {
       message: string;
     }
     // interface Locals {}
-    // interface PageData {}
+    interface PageData {
+      commitSha: string;
+    }
     // interface Platform {}
   }
   declare interface WindowEventMap {

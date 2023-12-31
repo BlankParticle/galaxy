@@ -28,6 +28,7 @@ export const nowPlayingResponse = transform(
         albumArt: album,
         artists,
         url: external_urls.spotify,
+        color: "",
         previewUrl: preview_url,
       }),
     ),

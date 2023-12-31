@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import ThemeSwitch from "./ThemeSwitch.svelte";
   import { motionReduced } from "@lib/utils/windowQuery.svelte";
 
-  let swinging = $state(false);
+  let swinging = false;
 
   const swing = async () => {
     const chars = Array.from(
@@ -34,7 +33,7 @@
     swinging = false;
   };
 
-  onMount(() => {
+  $effect(() => {
     swing();
   });
 </script>

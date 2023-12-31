@@ -9,7 +9,6 @@ declare const Buffer: {
     toString: (encoding: string) => string;
   };
 };
-
 import {
   SPOTIFY_CLIENT_ID,
   SPOTIFY_CLIENT_SECRET,
@@ -17,6 +16,8 @@ import {
 } from "$env/static/private";
 import { accessTokenResponse, nowPlayingResponse } from "@lib/schemas/api.spotify";
 import { $cached } from "@lib/utils/customRunes";
+import converters from "color-convert";
+import { getColor } from "colorthief";
 import { parseAsync } from "valibot";
 import type { RequestHandler } from "./$types";
 
@@ -53,11 +54,24 @@ const getNowPlaying = $cached(
     if (res.status === 204) {
       return { song: null };
     }
-    return await parseAsync(nowPlayingResponse, await res.json());
+    const resp = await parseAsync(nowPlayingResponse, await res.json());
+    if (resp.song) {
+      resp.song.color = await createColor(resp.song.albumArt);
+    }
+    return resp;
   },
   /* 15 seconds is a decent time, no one needs to updated in realtime about my songs */
   15 * 1000,
 );
+
+const createColor = async (image: string) => {
+  const color = await getColor(image);
+  const hsl = converters.rgb.hsl(color);
+  if (hsl[2] < 50) {
+    hsl[2] = 100 - hsl[2];
+  }
+  return `#${converters.hsl.hex(hsl)}`;
+};
 
 export const GET: RequestHandler = async () => {
   try {

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import { spring } from "svelte/motion";
   import { motionReduced, prefersDark } from "@lib/utils/windowQuery.svelte";
   import { playOnce } from "@lib/utils/sfx";
@@ -27,7 +26,31 @@
     damping: 0.2,
   });
 
+  const rays = $derived(
+    new Array(6).fill(0).map((_, i) => {
+      const angle = (i * 360) / 6 - 90;
+      const cx = $radialPositionSpring[i] * Math.cos((angle * Math.PI) / 180) + 14;
+      const cy = $radialPositionSpring[i] * Math.sin((angle * Math.PI) / 180) + 14;
+      return [cx, cy];
+    }),
+  );
+
+  const changeThemeMode = (forceTo?: string) => {
+    const mode =
+      forceTo || (document.documentElement.classList.contains("dark") ? "light" : "dark");
+    !forceTo && playOnce(`/media/switch-${mode === "dark" ? "off" : "on"}.mp3`);
+    isDarkMode = mode === "dark";
+    document.documentElement.classList.toggle("dark", mode === "dark");
+    document.documentElement.style.colorScheme = mode;
+    localStorage.setItem("theme", mode);
+    window.dispatchEvent(new CustomEvent("theme:change", { detail: { theme: mode } }));
+  };
+
   $effect(() => {
+    isDarkMode = document.documentElement.classList.contains("dark");
+    prefersDark.addCallback((matches) => {
+      changeThemeMode(matches ? "dark" : "light");
+    });
     iconSpring.set(
       isDarkMode
         ? {
@@ -61,33 +84,6 @@
         i * (motionReduced.matches ? 0 : 100),
       );
     }
-  });
-
-  const rays = $derived(
-    new Array(6).fill(0).map((_, i) => {
-      const angle = (i * 360) / 6 - 90;
-      const cx = $radialPositionSpring[i] * Math.cos((angle * Math.PI) / 180) + 14;
-      const cy = $radialPositionSpring[i] * Math.sin((angle * Math.PI) / 180) + 14;
-      return [cx, cy];
-    }),
-  );
-
-  const changeThemeMode = (forceTo?: string) => {
-    const mode =
-      forceTo || (document.documentElement.classList.contains("dark") ? "light" : "dark");
-    !forceTo && playOnce(`/media/switch-${mode === "dark" ? "off" : "on"}.mp3`);
-    isDarkMode = mode === "dark";
-    document.documentElement.classList.toggle("dark", mode === "dark");
-    document.documentElement.style.colorScheme = mode;
-    localStorage.setItem("theme", mode);
-    window.dispatchEvent(new CustomEvent("theme:change", { detail: { theme: mode } }));
-  };
-
-  onMount(() => {
-    isDarkMode = document.documentElement.classList.contains("dark");
-    prefersDark.addCallback((matches) => {
-      changeThemeMode(matches ? "dark" : "light");
-    });
   });
 </script>
 
